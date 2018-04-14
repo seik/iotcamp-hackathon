@@ -16,7 +16,8 @@ sleep(10)
 # def requestRuuvi():
 # threading.Timer(3,requestRuuvi).start()
 
-address = "0xCd21BC4dfD3566285496A53511bD6A8F0928e9AD"
+wallet_address = "0xCd21BC4dfD3566285496A53511bD6A8F0928e9AD"
+contract_address = "0xdEECe13B65eceb66e1C1eaBA1B4B7a37A5843554"
 private_key = "0xDF436EF6089C6D71A2E2FAB2E573B4B53829003E7161851AEFD7F8F1142C9E2F"
 
 dir = os.path.abspath(os.path.dirname(__file__))
@@ -35,17 +36,17 @@ for i in range(0, 10):
     # get latest state (does not get it from the device)
     state = sensor.state
 
-    confirmed_transactions = w3.eth.getTransactionCount(address)
+    confirmed_transactions = w3.eth.getTransactionCount(wallet_address)
 
     try:
-        pending_transactions = len(w3.txpool.inspect.pending[address])
+        pending_transactions = len(w3.txpool.inspect.pending[wallet_address])
     except KeyError:
         pending_transactions = 0
 
     nonce = pending_transactions + confirmed_transactions
 
     contract_instance = w3.eth.contract(
-        address=address, abi=build_json['abi'])
+        address=contract_address, abi=build_json['abi'])
     transaction = contract_instance.functions.publishTemperature(
         int(state['temperature'])).buildTransaction({'nonce': nonce})
     signed_txn = w3.eth.account.signTransaction(
