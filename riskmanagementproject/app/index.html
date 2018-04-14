@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Social</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <div class="col-lg-8 col-md-8">
+        <span>Start timestamp</span>
+        <input class="form-control" placeholder="1234567" id="start-timestamp-content"></input>
+        <span>End timestamp</span>
+        <input class="form-control" placeholder="1234567" id="end-timestamp-content"></input>
+        <span>Timeframe</span>
+        <input class="form-control" placeholder="123" id="timeframe-content"></input>
+        <span>Hash</span>
+        <input class="form-control" placeholder="0x12345" id="hash-content"></input>
+        <br>
+        <div class="w-100 d-flex justify-content-end p-r-4">
+          <a href="#" class="btn btn-primary btn-sm" onclick="App.publishPost()">Post</a>
+        </div>
+
+        <div class="clearfix"></div>
+        <hr>
+        <input class="form-control" placeholder="0x12345" id="hash-search"></input>
+        <br>
+        <div class="w-100 d-flex justify-content-end p-r-4">
+          <a href="#" class="btn btn-success btn-sm" onclick="App.loadPost()">Search</a>
+        </div>
+        <ul id="posts" class="mt-4">
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+<template id="post">
+  <li class="card mb-2">
+    <div class="card-body">
+      <div class="col">
+        <span>Start Timestamp </span>
+        <span id="start-timestamp">0</span>
+      </div>
+      <div class="col">
+        <span>Start Timestamp </span>
+        <span id="end-timestamp">0</span>
+      </div>
+      <div class="col">
+        <span>Start Timestamp </span>
+        <span id="timeframe">0</span>
+      </div>
+    </div>
+  </li>
+</template>
